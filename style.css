@@ -1,76 +1,77 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  min-height: 100vh;
+    min-height: 100vh;
 
-  background-color: #888787;
+    background-color: #888787;
 
-  font-weight: 700;
-  font-size: 35px;
-  font-family: sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    font-family: sans-serif;
 }
 
 .calculator {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
-  padding: 25px;
-  width: 100%;
-  max-width: 340px;
+    padding: 25px;
+    width: 100%;
+    max-width: 340px;
 
-  background-color: #424242;
-  border: 3px solid black;
-  border-radius: 10px;
+    background-color: #424242;
+    border: 3px solid black;
+    border-radius: 10px;
 }
 
 .total {
-  display: block;
-  text-align: right;
+    width: 100%;
+    padding: 10px 20px;
+    height: 100px;
 
-  padding: 10px 20px;
-  height: 100px;
-  width: 100%;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: #e7e7e7;
+    color: rgb(0, 0, 0);
 
-  border: 3px solid rgb(0, 0, 0);
-  border-radius: 5px;
-  background-color: #e7e7e7;
-  color: rgb(0, 0, 0);
+    text-align: right;
 }
 
 .keypad {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 
-  width: 100%;
-  gap: 13px;
+    width: 100%;
+    gap: 13px;
 }
 
 .button {
-  width: 60px;
-  height: 60px;
+    width: 60px;
+    height: 60px;
 
-  color: white;
-  background-color: #252525;
-  border-radius: 50%;
-  border: 1px solid rgb(0, 0, 0);
+    color: white;
+    background-color: #252525;
+    border-radius: 50%;
+    border: 1px solid rgb(0, 0, 0);
 
-  font-weight: 500;
-  font-size: 25px;
+    font-weight: 500;
+    font-size: 25px;
 }
 
 .button--c {
-  color: black;
-  background-color: orange;
-  border-color: rgb(0, 0, 0);
+    color: black;
+    background-color: orange;
+    border-color: rgb(0, 0, 0);
 
-  font-weight: 900;
+    font-weight: 900;
 }
