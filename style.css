@@ -68,7 +68,11 @@ body {
     font-size: 25px;
 }
 
-.button--c {
+.button-op {
+  background-color: rgba(113, 113, 113, 0.5);
+}
+
+.button-c {
     color: black;
     background-color: orange;
     border-color: rgb(0, 0, 0);
