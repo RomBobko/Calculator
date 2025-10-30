@@ -1,22 +1,3 @@
-// 1. Отримати всі кнопки
-// 2. Коли натискаю цифру — додати її в екран
-// 3. Коли натискаю операцію — зберегти її
-// 4. Коли натискаю = — порахувати і показати результат
-// 5. Коли натискаю C — очистити все
-
-// Знайти екран (.total)
-// Знайти keypad
-// Повісити слухач подій на keypad (один для всіх кнопок)
-// Усередині слухача - визначити тип кнопки через dataset
-
-// const refs = {
-//     totalValue: document.querySelector('.total'),
-//     numberBtn: document.querySelectorAll('[data-number]'),
-//     operationBtn: document.querySelectorAll('[data-op]'),
-//     clearBtn: document.querySelector('[data-clear]'),
-//     equalsBtn: document.querySelector('[data-equals]'),
-// };
-
 const refs = {
     totalValue: document.querySelector('.total'),
     keypad: document.querySelector('.keypad'),
@@ -27,7 +8,12 @@ refs.keypad.addEventListener('click', keypadClickHandler);
 let current = '';
 let previous = '';
 let operator = null;
-let justEvalueted = false;
+let justEvaluated = false;
+
+const add = (a, b) => a + b;
+const sub = (a, b) => a - b;
+const mul = (a, b) => a * b;
+const div = (a, b) => (b === 0 ? 'Error' : a / b);
 
 function keypadClickHandler(event) {
     const btn = event.target;
@@ -50,11 +36,6 @@ function keypadClickHandler(event) {
     render();
 }
 
-const add = (a, b) => a + b;
-const sub = (a, b) => a - b;
-const mul = (a, b) => a * b;
-const div = (a, b) => (b === 0 ? 'Error' : a / b);
-
 function compute(a, b, operator) {
     a = Number(a);
     b = Number(b);
@@ -75,35 +56,51 @@ function compute(a, b, operator) {
 }
 
 function numberBtnHandler(digit) {
-    if (justEvalueted) {
+    if (justEvaluated) {
         current = '';
-        justEvalueted = false;
+        justEvaluated = false;
     }
 
     current += digit;
 }
 
 function operationBtnHandler(op) {
+    if (!current && previous) {
+        operator = op;
+        return;
+    }
+
+    if (previous && current && operator) {
+        const result = compute(previous, current, operator);
+        previous = result.toString();
+        current = '';
+        operator = op;
+        return;
+    }
+
     previous = current;
     current = '';
     operator = op;
 }
 
-function clearBtnHandler(params) {
+function clearBtnHandler() {
     current = '';
     previous = '';
     operator = null;
+    justEvaluated = false;
 }
 
 function equalsBtnHandler() {
+    if (!previous || !current || !operator) return;
+
     const result = compute(previous, current, operator);
     current = result.toString();
     previous = '';
     operator = null;
-    justEvalueted = true;
+    justEvaluated = true;
 }
 
 function render() {
     refs.totalValue.textContent =
-        `${previous} ${operator || ''} ${current} `.trim() || '0';
+        `${previous}${operator || ''}${current} `.trim() || '0';
 }

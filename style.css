@@ -66,10 +66,17 @@ body {
 
     font-weight: 500;
     font-size: 25px;
+    cursor: pointer;
+}
+
+.button:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+    transition: box-shadow 0.2s ease;
 }
 
 .button-op {
-  background-color: rgba(113, 113, 113, 0.5);
+    background-color: rgba(113, 113, 113, 0.5);
+    border-color: #1a1a1ab9;
 }
 
 .button-c {
